@@ -36,7 +36,9 @@ class UserController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'role' => $request->role,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'position' => $request->position,
+            'department' => $request->department
         ]);
         return redirect()->route('users.index')->with('success', 'User created successfully.');
     }
@@ -58,7 +60,9 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'role' => $request->role
+            'role' => $request->role,
+            'position' => $request->position,
+            'department' => $request->department
         ]);
 
         // cek password update
