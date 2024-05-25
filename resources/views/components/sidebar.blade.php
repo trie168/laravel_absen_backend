@@ -23,5 +23,10 @@
 
             </li>
 
+            <li class="nav-item ">
+                <a href="{{ route('attendances.index') }}" class="nav-link "><i class="fas fa-columns"></i> <span>Attendances</span></a>
+
+            </li>
+
     </aside>
 </div>
