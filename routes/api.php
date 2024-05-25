@@ -20,3 +20,7 @@ Route::get('/company', CompanyController::class . '@show')->middleware('auth:san
 Route::post('/checkin', AttendanceController::class . '@checkIn')->middleware('auth:sanctum');
 //checkout
 Route::post('/checkout', AttendanceController::class . '@checkOut')->middleware('auth:sanctum');
+//check already checkin
+Route::get('/is-checkin', AttendanceController::class . '@isCheckIn')->middleware('auth:sanctum');
+//update image profile and face_embedding
+Route::post('/update-profile', AuthController::class . '@updateProfile')->middleware('auth:sanctum');

@@ -66,4 +66,30 @@ class AttendanceController extends Controller
             'attendance' => $attendance,
         ], 200);
     }
+
+    //check is user already checkin and checkout
+    public function isCheckIn(Request $request)
+    {
+        //get last attendance
+        $attendance = Attendance::where('user_id', $request->user()->id)
+            ->where('date', date('Y-m-d'))
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $message = '';
+        if ($attendance->time_in && $attendance->time_out) {
+            $message = 'You already checkin and checkout';
+        } elseif ($attendance->time_in) {
+            $message = 'You already checkin';
+        } else {
+            $message = 'You not checkin yet';
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'is_checkin' => $attendance->time_in ? true : false,
+            'is_checkout' => $attendance->time_out ? true : false,
+            'message' => $message,
+        ], 200);
+    }
 }

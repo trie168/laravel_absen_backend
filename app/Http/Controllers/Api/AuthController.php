@@ -55,4 +55,38 @@ class AuthController extends Controller
             'status' => 'success'
         ], 200);
     }
+
+    //update image profile and face_embedding
+    public function updateProfile(Request $request) {
+        $request->validate([
+            'image_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'face_embedding' => 'required'
+        ]);
+
+        $user = $request->user();
+        $user->face_embedding = $request->face_embedding;
+
+        if($request->hasFile('image_url')) {
+
+            //delete old image
+            $destination = 'public' . $user->image_url;
+            if(file_exists($destination)) {
+                unlink($destination);
+            }
+
+            //upload new image
+            $image = $request->file('image_url');
+            $image->storeAs('public/products', $user->id . '.' . $image->extension());
+            $user->image_url = '/products/' . $user->id . '.' . $image->extension();
+
+        }
+
+        $user->save();
+
+        return response([
+            'message' => 'Update profile successfull.',
+            'status' => 'success',
+            'user' => $user
+        ], 200);
+    }
 }
