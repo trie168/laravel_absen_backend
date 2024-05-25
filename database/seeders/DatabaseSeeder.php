@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Company;
+use App\Models\Attendance;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
+        Attendance::factory(20)->create();
 
         User::factory()->create([
             'name' => 'Tri Kusuma Atmaja',
@@ -35,5 +37,7 @@ class DatabaseSeeder extends Seeder
             'time_in' => '09:00',
             'time_out' => '17:00',
         ]);
+
+
     }
 }
