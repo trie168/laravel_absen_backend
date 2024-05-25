@@ -15,9 +15,9 @@ class CompanyController extends Controller
     }
 
     //edit
-    public function edit()
+    public function edit($id)
     {
-        $company = Company::find(1);
+        $company = Company::find($id);
         return view('pages.company.edit', compact('company'));
     }
 
@@ -38,9 +38,9 @@ class CompanyController extends Controller
             'time_out' => 'required',
         ]);
 
-        #update
-        $request->update($request->all());
+        //update
+        $company->update($request->all());
 
-        return redirect()->route('company.show')->with('success', 'Company updated successfully');
+        return redirect()->route('companies.show', $company->id)->with('success', 'Company updated successfully');
     }
 }
