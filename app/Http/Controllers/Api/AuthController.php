@@ -23,17 +23,36 @@ class AuthController extends Controller
 
         //cek user exist
         if(!$user) {
-            return response(['message' => 'Invalid credentials'], 401);
+            return response([
+                'message' => 'These credentials do not match our records.',
+                'status' => 'failed'
+            ], 401);
         }
 
         //cek password
         if(!Hash::check($loginData['password'], $user->password)) {
-            return response(['message' => 'Invalid password'], 401);
+            return response([
+                'message' => 'Invalid password',
+                'status' => 'failed'
+            ], 401);
         }
 
         // create token
         $token = $user->createToken('auth_token')->plainTextToken;
-        return response(['user' => $user, 'token' => $token], 200);
+        return response([
+            'user' => $user,
+            'token' => $token,
+            'message' => 'Login successfull.',
+            'status' => 'success'
+        ], 200);
     }
 
+    //logout
+    public function logout(Request $request) {
+        $request->user()->currentAccessToken()->delete();
+        return response([
+            'message' => 'Logout successfull.',
+            'status' => 'success'
+        ], 200);
+    }
 }
