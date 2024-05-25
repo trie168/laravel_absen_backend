@@ -16,11 +16,11 @@ return new class extends Migration
             //user_id (foreign key to users table)
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             //date
-            $table->date('date');
+            $table->timestamp('date')->nullable();
             //time_in
-            $table->time('time_in');
+            $table->timestamp('time_in')->nullable();
             //time_out
-            $table->time('time_out')->nullable();
+            $table->timestamp('time_out')->nullable();
             //latlon_in
             $table->string('latlon_in');
             //latlon_out

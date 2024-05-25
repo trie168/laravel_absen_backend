@@ -28,9 +28,9 @@ return new class extends Migration
             //tlp
             $table->string('tlp');
             //time_in   (format: 09:00)
-            $table->string('time_in');
+            $table->time('time_in');
             //time_out  (format: 17:00)
-            $table->string('time_out');
+            $table->time('time_out');
 
             $table->timestamps();
         });
