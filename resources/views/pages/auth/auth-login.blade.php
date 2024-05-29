@@ -43,7 +43,16 @@
                     </div>
                 </div>
 
-               
+                <div class="form-group">
+                    <strong>ReCaptcha:</strong>
+                    <div style="transform:scale(0.7);transform-origin:0;">
+                        <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}"></div>
+                        @if ($errors->has('g-recaptcha-response'))
+                            <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                        @endif
+                    </div>
+
+                </div>
 
                 <div class="form-group">
                     <button type="submit"
@@ -53,7 +62,7 @@
                     </button>
                 </div>
             </form>
-            
+
 
         </div>
     </div>
