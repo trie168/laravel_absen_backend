@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\AttendanceController;
 use App\Http\Controllers\Api\PermissionController;
+use App\Http\Controllers\Api\NoteController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -27,3 +28,5 @@ Route::get('/is-checkin', AttendanceController::class . '@isCheckIn')->middlewar
 Route::post('/update-profile', AuthController::class . '@updateProfile')->middleware('auth:sanctum');
 //permission
 Route::post('/permission', PermissionController::class . '@store')->middleware('auth:sanctum');
+//notes
+Route::apiResource('/notes', NoteController::class)->middleware('auth:sanctum');
