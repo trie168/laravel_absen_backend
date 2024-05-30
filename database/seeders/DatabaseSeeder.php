@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Company;
 use App\Models\Attendance;
+use App\Models\Permission;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,11 +19,12 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         Attendance::factory(20)->create();
+        Permission::factory(15)->create();
 
         User::factory()->create([
-            'name' => 'Tri Kusuma Atmaja',
-            'email' => 'trie168@gmail.com',
-            'password' => Hash::make('123456')
+            'name' => 'Tri Kusuma',
+            'email' => 'tri.kusuma@gmail.com',
+            'password' => Hash::make('123123')
         ]);
 
         Company::create([
