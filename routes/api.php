@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\AttendanceController;
+use App\Http\Controllers\Api\PermissionController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -24,3 +25,5 @@ Route::post('/checkout', AttendanceController::class . '@checkOut')->middleware(
 Route::get('/is-checkin', AttendanceController::class . '@isCheckIn')->middleware('auth:sanctum');
 //update image profile and face_embedding
 Route::post('/update-profile', AuthController::class . '@updateProfile')->middleware('auth:sanctum');
+//permission
+Route::post('/permission', PermissionController::class . '@store')->middleware('auth:sanctum');

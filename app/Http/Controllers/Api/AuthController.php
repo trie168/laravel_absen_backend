@@ -76,8 +76,8 @@ class AuthController extends Controller
 
             //upload new image
             $image = $request->file('image_url');
-            $image->storeAs('public/products', $user->id . '.' . $image->extension());
-            $user->image_url = '/products/' . $user->id . '.' . $image->extension();
+            $image->storeAs('public/users', $user->id . '.' . $image->extension());
+            $user->image_url = '/users/' . $user->id . '.' . $image->extension();
 
         }
 
