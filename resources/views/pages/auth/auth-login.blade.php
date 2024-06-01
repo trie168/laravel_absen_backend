@@ -4,21 +4,18 @@
 
 @push('style')
     <!-- CSS Libraries -->
-    <link rel="stylesheet"
-        href="{{ asset('library/bootstrap-social/bootstrap-social.css') }}">
+    <link rel="stylesheet" href="{{ asset('library/bootstrap-social/bootstrap-social.css') }}">
 @endpush
 
 @section('main')
     <div class="card card-primary">
         <div class="card-header">
-            <h4>Login</h4>
+            <h4>Aplikasi Absensi</h4>
+            {{-- <h4>Login</h4> --}}
         </div>
 
         <div class="card-body">
-            <form method="POST"
-                action="{{ route('login') }}"
-                class="needs-validation"
-                novalidate="">
+            <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
                 @csrf
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -55,9 +52,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit"
-                        class="btn btn-primary btn-lg btn-block"
-                        tabindex="4">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                         Login
                     </button>
                 </div>
