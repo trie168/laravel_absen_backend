@@ -32,8 +32,14 @@
     </script>
     <style>
         body {
-            background-color: #777 !important;
-            background-image: url('https://source.unsplash.com/random/featured/?business-work') !important;
+            /* background-color: #777 !important;
+            background-image: url('https://source.unsplash.com/random/featured/?business-work') !important; */
+            /*
+            * Created with https://www.css-gradient.com
+            * Gradient link: https://www.css-gradient.com/?c1=0f51e7&c2=c529e2&gt=r&gd=dtl
+            */
+            background: rgba(15, 81, 231, 1.0);
+            background: radial-gradient(at left top, rgba(15, 81, 231, 1.0), rgba(197, 41, 226, 1.0));
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
